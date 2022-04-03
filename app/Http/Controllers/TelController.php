@@ -65,28 +65,7 @@ class TelController extends Controller
      */
     public function update(Request $request, Tel $tel)
     {
-        dd($request->all());
-        $request->validate([
-            'name' => 'required',
-            'tel' => 'required',
-        ]);
-        $image = null;
-        if ($request->image) {
-            $file_name = time() . '_' . $request->image->getClientOriginalName();
-            $file_path = $request->file('image')->storeAs('uploads', $file_name, 'public');
-
-            $image = time() . '_' . $request->image->getClientOriginalName();
-        }
-        $data = [
-            'name' => $request->name,
-            'tel' => $request->tel,
-            'image' => asset('storage/uploads\/').$image,
-        ];
-
-        $tel->update($data);
-        dd($tel);
-
-        return response('Updated succesffully', 200);
+        
     }
 
     /**
